@@ -146,7 +146,7 @@ for index, item in enumerate(getTeams(baseUrl), start=1):
 
 df = pd.DataFrame(allTeamsStats)
 print(df)
-df.to_csv('first_output.csv', index=False)
+df.to_csv('stats.csv', index=False)
 
 # API FOR TEAM PLAYERS: https://feeds.incrowdsports.com/provider/euroleague-feeds/v2/competitions/E/seasons/E2024/clubs/zal/people/stats
 # API FOR INDIVIDUAL WHOLE TEAM STATS: https://feeds.incrowdsports.com/provider/euroleague-feeds/v2/competitions/E/seasons/E2024/clubs/zal/stats
