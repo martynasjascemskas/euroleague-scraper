@@ -9,8 +9,7 @@ from selenium.webdriver.support import expected_conditions as EC
 baseUrl = "https://www.euroleaguebasketball.net/"
 allTeamsStats = []
 
-def getTeams():
-    baseUrl = "https://www.euroleaguebasketball.net/"
+def getTeams(baseUrl):
     r = requests.get('https://www.euroleaguebasketball.net/en/euroleague/teams/')
     soup = BeautifulSoup(r.content, 'lxml')
     teamlist = soup.find_all('ul', class_='teams-list_list__VcpE5')
@@ -135,16 +134,14 @@ def getTeamStats(team_link, team_name, allTeamsStats):
             break
     return allTeamsStats
 
-team_stats_links = []
-
-for index, item in enumerate(getTeams(), start=1):
-    print(f'Starting Scraping Team Stats: {index}/{len(getTeams())}')
+for index, item in enumerate(getTeams(baseUrl), start=1):
+    print(f'Starting Scraping Team Stats: {index}/{len(getTeams(baseUrl))}')
     team_link, team_name = getTeamStatsLink(f'{item}')
     team_link = baseUrl + team_link
     print(f'Team name: {team_name}')
     print(f'Team link: {team_link}')
     getTeamStats(team_link, team_name, allTeamsStats)
-    print(f'Finished Scraping Team Stats: {index}/{len(getTeams())}')
+    print(f'Finished Scraping Team Stats: {index}/{len(getTeams(baseUrl))}')
     print("----------------------------")
 
 df = pd.DataFrame(allTeamsStats)
