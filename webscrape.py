@@ -31,6 +31,7 @@ def getTeamStats(team_link, team_name, allTeamsStats):
     url = f'{team_link}'
 
     options = webdriver.ChromeOptions()
+    # Using a pre-configured browsing profile to get around Chrome Cookies on EuroLeague website.
     options.add_argument("user-data-dir=C:/Users/Martynas/AppData/Local/Google/Chrome/User Data")
     options.add_argument("profile-directory=Default")
     driver = webdriver.Chrome(options=options)
